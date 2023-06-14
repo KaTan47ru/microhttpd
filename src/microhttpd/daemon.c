@@ -6566,7 +6566,9 @@ MHD_start_daemon_va (unsigned int flags,
   daemon->pool_increment = MHD_BUF_INC_SIZE;
   daemon->unescape_callback = &unescape_wrapper;
   daemon->connection_timeout_ms = 0;       /* no timeout */
-  MHD_itc_set_invalid_ (daemon->itc);
+  daemon->thread_number = -1;
+  MHD_itc_set_invalid_ (daemon->itc);  
+  
 #ifdef SOMAXCONN
   daemon->listen_backlog_size = SOMAXCONN;
 #else  /* !SOMAXCONN */
@@ -7282,6 +7284,7 @@ MHD_start_daemon_va (unsigned int flags,
         d->master = daemon;
         d->worker_pool_size = 0;
         d->worker_pool = NULL;
+        d->thread_number = i;
 #if defined(DAUTH_SUPPORT) && defined(MHD_USE_THREADS)
         /* Avoid accidental re-use of the mutex copies */
         memset (&d->nnc_lock, -1, sizeof(d->nnc_lock));

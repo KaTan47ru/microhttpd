@@ -2156,6 +2156,11 @@ struct MHD_Daemon
    */
   unsigned int listen_backlog_size;
 
+   /**
+   *  Number of thread from threadpool
+   */
+  int thread_number;
+
   /**
    * The number of user options used.
    *
