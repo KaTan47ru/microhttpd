@@ -5763,6 +5763,7 @@ parse_options_va (struct MHD_Daemon *daemon,
     case MHD_OPTION_THREAD_POOL_SIZE:
       daemon->worker_pool_size = va_arg (ap,
                                          unsigned int);
+      printf(daemon->worker_pool_size);
       if (0 == daemon->worker_pool_size)
       {
 #ifdef HAVE_MESSAGES
