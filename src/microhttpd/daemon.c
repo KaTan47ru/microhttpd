@@ -7252,7 +7252,7 @@ MHD_start_daemon_va (unsigned int flags,
           MHD_socket_close_chk_ (listen_fd);
         goto free_and_fail;
       }
-      printf("Another vetka\n");
+      //printf("Another vetka\n");
     }
     else   /* 0 < daemon->worker_pool_size */
     {
@@ -7287,7 +7287,7 @@ MHD_start_daemon_va (unsigned int flags,
         d->worker_pool_size = 0;
         d->worker_pool = NULL;
         d->thread_number = i;
-        printf("%i",i);
+        //printf("%i",i);
 #if defined(DAUTH_SUPPORT) && defined(MHD_USE_THREADS)
         /* Avoid accidental re-use of the mutex copies */
         memset (&d->nnc_lock, -1, sizeof(d->nnc_lock));
